@@ -17,7 +17,7 @@
 package org.wso2.carbon.identity.oauth.scope.endpoint.util;
 
 import org.apache.commons.logging.Log;
-import org.apache.log4j.MDC;
+import org.slf4j.MDC;
 import org.wso2.carbon.context.PrivilegedCarbonContext;
 import org.wso2.carbon.identity.oauth.scope.endpoint.dto.ErrorDTO;
 import org.wso2.carbon.identity.oauth.scope.endpoint.dto.ScopeBindingDTO;
@@ -109,7 +109,7 @@ public class ScopeUtils {
     public static String getCorrelation() {
         String ref = null;
         if (isCorrelationIDPresent()) {
-            ref = MDC.get(Oauth2ScopeConstants.CORRELATION_ID_MDC).toString();
+            ref = MDC.get(Oauth2ScopeConstants.CORRELATION_ID_MDC);
         }
         return ref;
     }
