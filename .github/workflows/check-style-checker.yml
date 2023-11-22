@@ -17,8 +17,11 @@ jobs:
       with:
         python-version: '3.8' # Specify the version of Python you need
 
+    - name: Download requirements.txt
+      run: curl -o requirements.txt https://raw.githubusercontent.com/sahandilshan/identity-inbound-auth-oauth/master/.github/workflows/scripts/requirements.txt
+  
     - name: Install Python dependencies
-      run: pip install -r .github/workflows/scripts/check-styles/requirements.txt
+      run: pip install -r requirements.txt
       # Ensure that you have a requirements.txt file at the specified location
 
     - name: Check Comments and New Lines
