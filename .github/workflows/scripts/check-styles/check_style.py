@@ -5,7 +5,8 @@ from github import Github
 # Initialize with the token
 g = Github(os.getenv('GITHUB_TOKEN'))
 repo = g.get_repo(os.getenv('GITHUB_REPOSITORY'))
-pr = repo.get_pull(os.getenv('GITHUB_REF').split('/')[-1])
+pr_number = int(os.getenv('PR_NUMBER'))  # Convert to int since environment variables are strings
+pr = repo.get_pull(pr_number)
 
 # Fetch files changed in the PR
 files = pr.get_files()
