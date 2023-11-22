@@ -28,3 +28,4 @@ jobs:
       run: python3 .github/workflows/scripts/check-styles/check_style.py
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_NUMBER: ${{ github.event.number }}

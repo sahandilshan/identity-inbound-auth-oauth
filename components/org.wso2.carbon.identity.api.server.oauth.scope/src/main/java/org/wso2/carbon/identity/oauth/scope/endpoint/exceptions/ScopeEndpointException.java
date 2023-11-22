@@ -40,4 +40,16 @@ public class ScopeEndpointException extends WebApplicationException {
                 .entity(ScopeUtils.getCorrelation())
                 .build());
     }
+    
+
+    // Valid comment.
+    // Invalid Comment
+    public ScopeEndpointException(Response.Status status, boolean test) {
+
+        super(Response.status(status)
+                .entity(ScopeUtils.getCorrelation())
+                .build());
+    }
+
+
 }
