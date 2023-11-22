@@ -1,0 +1,27 @@
+name: Code Style Checks
+
+on:
+  pull_request:
+    branches: [ master ]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-style:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8' # Specify the version of Python you need
+
+    - name: Install Python dependencies
+      run: pip install -r .github/workflows/scripts/check-styles/requirements.txt
+      # Ensure that you have a requirements.txt file at the specified location
+
+    - name: Check Comments and New Lines
+      run: python3 .github/workflows/scripts/check-styles/check_style.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
